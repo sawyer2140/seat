@@ -1,4 +1,5 @@
 import Baidu.Result;
+import org.apache.commons.math3.genetics.PermutationChromosome;
 import org.apache.commons.math3.util.CombinatoricsUtils;
 import Baidu.Request;
 
@@ -47,7 +48,9 @@ public class Main {
 
         Main main = new Main();
 
-        List<Result> results = main.getCombo(main.init());
+        Person person = new Person();
+
+        List<Result> results = main.getCombo(person.init());
 
 
         Request request = new Request();
