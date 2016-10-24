@@ -20,7 +20,7 @@ public class Sort {
                 tempResult.setTotal(r.getTotal());
                 tempResult.setDesc(r.getDesc());
                 tempResult.setNames(r.getNames());
-                
+
             }
 
         }
