@@ -1,6 +1,7 @@
 package Baidu;
 
 import com.alibaba.fastjson.JSON;
+import seat.Result;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

@@ -1,46 +1,34 @@
 package seat;
 
-import Baidu.Result;
-
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author sawyer 2016/10/25上午11:54
  */
 public class Strategy {
 
-    public List<Result> isSameSex(List<Result> results){
+    public List<Result> isSame(List<Result> results) {
 
-        for(Result r  : results){
+        Iterator<Result> resultIterator = results.iterator();
+        while (resultIterator.hasNext()) {
 
+            Result r = resultIterator.next();
 
+            if (r.getFirstColleagues().getSex().equals(Sex.GIRL) &&
+                    r.getSecondColleagues().getSex().equals(Sex.GIRL)) {
 
-        }
+                resultIterator.remove();
 
-        return null;
+            } else if (r.getFirstColleagues().getIdentity().equals(Identity.PRODUCT) &&
+                    r.getSecondColleagues().getIdentity().equals(Identity.PRODUCT)) {
 
-    }
-
-    public static void main(String[] args) {
-
-        List<String> list = new LinkedList<String>();
-        list.add("a");
-        list.add("b");
-        list.add("c");
-
-        for(String s : list){
-
-            if(s.equals("b")){
-
-                list.remove(s);
+                resultIterator.remove();
 
             }
 
         }
 
-        System.out.println(list.get(0));
-        System.out.println(list.get(1));
-    }
+        return results;
 
+    }
 }

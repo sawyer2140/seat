@@ -1,19 +1,18 @@
-package Baidu;
+package seat;
 
-
-import seat.Colleagues;
 
 /**
  * @author sawyer 2016/10/21下午12:19
  */
-public class Result {
+public class Result implements Comparable<Result> {
 
     private String names;
     private String desc;
     private int total;
     private String firstZodiac;
     private String secondZodiac;
-    private Colleagues colleagues;
+    private Colleagues firstColleagues;
+    private Colleagues secondColleagues;
 
     public String getNames() {
         return names;
@@ -55,11 +54,37 @@ public class Result {
         this.secondZodiac = secondZodiac;
     }
 
-    public Colleagues getColleagues() {
-        return colleagues;
+    public Colleagues getFirstColleagues() {
+        return firstColleagues;
     }
 
-    public void setColleagues(Colleagues colleagues) {
-        this.colleagues = colleagues;
+    public void setFirstColleagues(Colleagues firstColleagues) {
+        this.firstColleagues = firstColleagues;
+    }
+
+    public Colleagues getSecondColleagues() {
+        return secondColleagues;
+    }
+
+    public void setSecondColleagues(Colleagues secondColleagues) {
+        this.secondColleagues = secondColleagues;
+    }
+
+    public int compareTo(Result o) {
+
+        if (this.getTotal() > o.getTotal()) {
+
+            return 1;
+
+        } else if (this.getTotal() == o.getTotal()) {
+
+            return 0;
+
+        } else {
+
+            return -1;
+
+        }
+
     }
 }

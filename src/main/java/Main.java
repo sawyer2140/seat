@@ -1,13 +1,10 @@
 import Baidu.Request;
-import Baidu.Result;
-import org.apache.commons.math3.util.CombinatoricsUtils;
-import seat.Colleagues;
+import seat.Math;
 import seat.Person;
-import seat.Sort;
+import seat.Result;
 import seat.Zodiac;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,54 +12,31 @@ import java.util.List;
  */
 public class Main {
 
-    public List<Result> getCombo(List<Colleagues> colleagues){
-
-        Iterator<int[]> iterator = CombinatoricsUtils.combinationsIterator(colleagues.size(),2);
-
-        List<Result> results = new ArrayList<Result>();
-
-        while (iterator.hasNext()){
-
-            Result result = new Result();
-
-            int[] indexs = iterator.next();
-
-            result.setFirstZodiac(Zodiac.getName(colleagues.get(indexs[0]).getZodiac()));
-
-            result.setSecondZodiac(Zodiac.getName(colleagues.get(indexs[1]).getZodiac()));
-
-            result.setNames(colleagues.get(indexs[0]).getName() +","
-                    +colleagues.get(indexs[1]).getName());
-
-            result.setDesc(Zodiac.getName(colleagues.get(indexs[0]).getZodiac()) +","
-                    +Zodiac.getName(colleagues.get(indexs[1]).getZodiac()));
-
-            results.add(result);
-
-        }
-
-        return results;
-
-    }
-
-
-
     public static void main(String[] args) {
-
-        Main main = new Main();
 
         Person person = new Person();
 
-        List<Result> results = main.getCombo(person.init());
+        Math seatMath = new Math();
 
+        List<Result> results = seatMath.getCombo(person.init());
 
         Request request = new Request();
+
+
         List<Result> finalResult = request.fixZodiac(results);
 
-        Sort sort = new Sort();
-        Result sortResult = sort.sort(finalResult);
+        Collections.sort(finalResult);
 
-        System.out.println("--->"+sortResult.getNames());
+
+        for(int i=0;i<finalResult.size();i++ ){
+
+            System.out.println(finalResult.get(i).getFirstColleagues().getName()+
+                    "和"+finalResult.get(i).getSecondColleagues().getName());
+            System.out.println("Zodiac是:"+Zodiac.getName(finalResult.get(i).getFirstColleagues().getZodiac())+
+                    "与"+Zodiac.getName((finalResult.get(i).getSecondColleagues().getZodiac())));
+            System.out.println("得分是:"+finalResult.get(i).getTotal());
+            System.out.println("========="+i+"=========");
+        }
 
 
     }
