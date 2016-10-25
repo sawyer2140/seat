@@ -1,3 +1,5 @@
+package seat;
+
 import Baidu.Result;
 
 import java.util.List;

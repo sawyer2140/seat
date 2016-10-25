@@ -1,3 +1,5 @@
+package seat;
+
 /**
  * @author sawyer 2016/10/21上午11:42
  */

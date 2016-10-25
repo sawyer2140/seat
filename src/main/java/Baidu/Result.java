@@ -1,6 +1,8 @@
 package Baidu;
 
-;
+
+import seat.Colleagues;
+
 /**
  * @author sawyer 2016/10/21下午12:19
  */
@@ -11,6 +13,7 @@ public class Result {
     private int total;
     private String firstZodiac;
     private String secondZodiac;
+    private Colleagues colleagues;
 
     public String getNames() {
         return names;
@@ -50,5 +53,13 @@ public class Result {
 
     public void setSecondZodiac(String secondZodiac) {
         this.secondZodiac = secondZodiac;
+    }
+
+    public Colleagues getColleagues() {
+        return colleagues;
+    }
+
+    public void setColleagues(Colleagues colleagues) {
+        this.colleagues = colleagues;
     }
 }

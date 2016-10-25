@@ -1,11 +1,13 @@
-import Baidu.Result;
-import org.apache.commons.math3.genetics.PermutationChromosome;
-import org.apache.commons.math3.util.CombinatoricsUtils;
 import Baidu.Request;
+import Baidu.Result;
+import org.apache.commons.math3.util.CombinatoricsUtils;
+import seat.Colleagues;
+import seat.Person;
+import seat.Sort;
+import seat.Zodiac;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -24,6 +26,7 @@ public class Main {
             Result result = new Result();
 
             int[] indexs = iterator.next();
+
             result.setFirstZodiac(Zodiac.getName(colleagues.get(indexs[0]).getZodiac()));
 
             result.setSecondZodiac(Zodiac.getName(colleagues.get(indexs[1]).getZodiac()));

@@ -1,8 +1,9 @@
+package seat;
+
 /**
  * Created by sawyer on 2016/10/21.
  */
-public enum Identity {
+public enum Sex {
 
-    DEVELOP,PRODUCT
-
+    BOY,GIRL
 }
