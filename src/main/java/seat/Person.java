@@ -49,7 +49,7 @@ public class Person {
 
         Colleagues zzq = new Colleagues();
         zzq.setIdentity(Identity.DEVELOP);
-        zzq.setName("李双双");
+        zzq.setName("张兆庆");
         zzq.setSex(Sex.BOY);
         zzq.setZodiac(Zodiac.Scorpio);
         colleagues.add(zzq);
