@@ -22,8 +22,6 @@ public class Request {
         StringBuffer sbf = new StringBuffer();
         httpUrl = httpUrl + "?" + httpArg;
 
-        System.out.println(httpUrl);
-
         try {
 
             URL url = new URL(httpUrl);
@@ -31,7 +29,7 @@ public class Request {
                     .openConnection();
 
             connection.setRequestMethod("GET");
-            connection.setRequestProperty("apikey",BaiduConf.KEY.value);
+            connection.setRequestProperty("apikey", BaiduConf.KEY.value);
             connection.connect();
 
             InputStream is = connection.getInputStream();
@@ -57,29 +55,28 @@ public class Request {
         return result;
     }
 
-    public HttpResult httpPostBaidu(String firstZodiac,String secondZodiac){
+    public HttpResult httpPostBaidu(String firstZodiac, String secondZodiac) {
 
         String httpUrl = BaiduConf.APIURL.value;
-        String httpArg = "me="+firstZodiac+"&he="+secondZodiac+"&all=1";
+        String httpArg = "me=" + firstZodiac + "&he=" + secondZodiac + "&all=1";
         String jsonResult = request(httpUrl, httpArg);
 
-        System.out.println(jsonResult);
-        return JSON.parseObject(jsonResult,HttpResult.class);
+        return JSON.parseObject(jsonResult, HttpResult.class);
 
     }
 
-    public int getTotal(HttpResult httpResult){
+    public int getTotal(HttpResult httpResult) {
 
         String grade = httpResult.getNewslist().get(0).getGrade();
         int starAscii = 9733;
 
         int total = 0;
 
-        for(Character c : grade.toCharArray()){
+        for (Character c : grade.toCharArray()) {
 
-            if(Integer.valueOf(c)==starAscii){
+            if (Integer.valueOf(c) == starAscii) {
 
-                total ++;
+                total++;
 
             }
 
@@ -90,11 +87,11 @@ public class Request {
     }
 
 
-    public List<Result> fixZodiac(List<Result> results){
+    public List<Result> fixZodiac(List<Result> results) {
 
-        for(Result r : results){
+        for (Result r : results) {
 
-            r.setTotal(getTotal(httpPostBaidu(r.getFirstZodiac(),r.getSecondZodiac())));
+            r.setTotal(getTotal(httpPostBaidu(r.getFirstZodiac(), r.getSecondZodiac())));
 
         }
 
